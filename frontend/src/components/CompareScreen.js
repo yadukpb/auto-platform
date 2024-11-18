@@ -47,10 +47,22 @@ const useStyles = makeStyles((theme) => ({
   },
   select: {
     minWidth: '300px',
-    backgroundColor: Colors.white,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: '8px',
     '& .MuiSelect-select': {
-      padding: '1rem'
+      padding: '1rem',
+      color: '#000000',
+      fontWeight: 'bold'
+    }
+  },
+  menuPaper: {
+    backgroundColor: '#000000',
+    color: '#ffffff',
+    '& .MuiMenuItem-root': {
+      color: '#ffffff',
+      '&:hover': {
+        backgroundColor: Colors.orange
+      }
     }
   },
   compareButton: {
@@ -173,6 +185,12 @@ export default function CompareScreen() {
             onChange={(e) => setSelectedCar1(e.target.value)}
             className={classes.select}
             displayEmpty
+            MenuProps={{ 
+              classes: { paper: classes.menuPaper },
+              PaperProps: {
+                sx: { maxHeight: 300 }
+              }
+            }}
           >
             <MenuItem value="" disabled>Select First Car</MenuItem>
             {cars.map((car) => (
@@ -185,6 +203,12 @@ export default function CompareScreen() {
             onChange={(e) => setSelectedCar2(e.target.value)}
             className={classes.select}
             displayEmpty
+            MenuProps={{ 
+              classes: { paper: classes.menuPaper },
+              PaperProps: {
+                sx: { maxHeight: 300 }
+              }
+            }}
           >
             <MenuItem value="" disabled>Select Second Car</MenuItem>
             {cars.map((car) => (
